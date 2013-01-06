@@ -5,12 +5,14 @@ import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.view.animation.Interpolator;
 
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.Animator.AnimatorListener;
 import com.nineoldandroids.animation.AnimatorListenerAdapter;
 import com.nineoldandroids.animation.ValueAnimator;
 import com.nineoldandroids.view.ViewHelper;
+import com.nineoldandroids.view.ViewPropertyAnimator;
 
 import static com.nineoldandroids.view.ViewHelper.setAlpha;
 import static com.nineoldandroids.view.ViewPropertyAnimator.animate;
@@ -178,7 +180,8 @@ public class SwipeDismissTouchListener implements View.OnTouchListener {
 				});
 			} else {
 				// cancel
-				mView.animate().translationX(0).alpha(1).setDuration(mAnimationTime).setListener(null);
+				//mView.animate();
+				com.nineoldandroids.view.ViewPropertyAnimator.animate(mView).translationX(0).alpha(1).setDuration(mAnimationTime);
 			}
 			mVelocityTracker = null;
 			mTranslationX = 0;
