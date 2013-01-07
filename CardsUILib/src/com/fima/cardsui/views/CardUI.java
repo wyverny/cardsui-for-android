@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.Resources;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -15,6 +14,9 @@ import android.view.animation.TranslateAnimation;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.FrameLayout;
+import android.widget.Space;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 
 import com.fima.cardsui.R;
 import com.fima.cardsui.StackAdapter;
@@ -47,6 +49,14 @@ public class CardUI extends FrameLayout {
 	private boolean mHeaderSet;
 	private View mHeaderView;
 	private ViewGroup mQuickReturnView;
+	/**
+	 * The table layout to be used for multiple columns
+	 */
+	private TableLayout mTableLayout;
+	/**
+	 * The number of columns, 1 by default
+	 */
+	private int mColumnNumber = 1;
 	private View mPlaceholderView;
 	private QuickReturnListView mListView;
 	private int mMinRawY = 0;
@@ -66,7 +76,8 @@ public class CardUI extends FrameLayout {
 	 */
 	public CardUI(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-
+		//read the number of columns from the attributes
+		mColumnNumber = attrs.getAttributeIntValue(null, "columnCount", 1);
 		initData(context);
 	}
 
@@ -75,6 +86,8 @@ public class CardUI extends FrameLayout {
 	 */
 	public CardUI(Context context, AttributeSet attrs) {
 		super(context, attrs);
+		//read the number of columns from the attributes
+		mColumnNumber = attrs.getAttributeIntValue(null, "columnCount", 1);
 		initData(context);
 	}
 
@@ -89,12 +102,17 @@ public class CardUI extends FrameLayout {
 	private void initData(Context context) {
 		mContext = context;
 		LayoutInflater inflater = LayoutInflater.from(context);
-		inflater.inflate(R.layout.cards_view, this);
-
 		mStacks = new ArrayList<AbstractCard>();
-
-		// init observable scrollview
-		mListView = (QuickReturnListView) findViewById(R.id.listView);
+		//inflate a different layout, depending on the number of columns
+		if (mColumnNumber == 1) {
+			inflater.inflate(R.layout.cards_view, this);
+			// init observable scrollview
+			mListView = (QuickReturnListView) findViewById(R.id.listView);
+		} else {
+			//initialize the mulitcolumn view
+			inflater.inflate(R.layout.cards_view_multicolumn, this);
+			mTableLayout = (TableLayout) findViewById(R.id.tableLayout);
+		}
 		// mListView.setCallbacks(this);
 
 		mHeader = inflater.inflate(R.layout.header, null);
@@ -279,13 +297,51 @@ public class CardUI extends FrameLayout {
 			refresh();
 
 	}
-
+	//suppress this error message to be able to use spaces in higher api levels
+	@SuppressLint("NewApi")
 	public void refresh() {
 
 		if (mAdapter == null) {
 			mAdapter = new StackAdapter(mContext, mStacks, mSwipeable);
-			mListView.setAdapter(mAdapter);
-
+			if (mListView != null) {
+				mListView.setAdapter(mAdapter);
+			} else if (mTableLayout != null) {
+				TableRow tr = null;
+				for (int i = 0; i < mAdapter.getCount(); i += mColumnNumber) {
+					//add a new table row with the current context
+					tr = (TableRow) new TableRow(mTableLayout.getContext());
+					tr.setOrientation(TableRow.HORIZONTAL);
+					tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
+							TableRow.LayoutParams.WRAP_CONTENT));
+					//add as many cards as the number of columns indicates per row
+					for (int j = 0; j < mColumnNumber; j++) {
+						if (i + j < mAdapter.getCount()) {
+							View card = mAdapter.getView(i + j, null, tr);
+							if(card.getLayoutParams() != null) {
+								card.setLayoutParams(new TableRow.LayoutParams(card.getLayoutParams().width, card.getLayoutParams().height, 1f));
+							} else {
+								card.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT, 1f));
+							}
+							tr.addView(card);
+						}
+					}
+					mTableLayout.addView(tr);
+				}
+				if(tr != null) {
+					//fill the empty space with spacers
+					for (int j = mAdapter.getCount() % mColumnNumber; j > 0; j--) {
+						View space = null;
+						if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+							space = new Space(tr.getContext()) ;
+						} else {
+							space = new View(tr.getContext()) ;
+						}
+						space.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT, 1f));
+						tr.addView(space);
+					}
+				}
+				
+			}
 		} else {
 			mAdapter.setItems(mStacks);
 
