@@ -31,7 +31,6 @@ public class CardUI extends FrameLayout {
 	private static final int STATE_ONSCREEN = 0;
 	private static final int STATE_OFFSCREEN = 1;
 	private static final int STATE_RETURNING = 2;
-	
 
 	public interface OnRenderedListener {
 		public void onRendered();
@@ -56,7 +55,7 @@ public class CardUI extends FrameLayout {
 	private boolean mSwipeable = false;
 	private OnRenderedListener onRenderedListener;
 	protected int renderedCardsStacks = 0;
-	
+
 	protected int mScrollY;
 	private StackAdapter mAdapter;
 	private View mHeader;
@@ -259,6 +258,10 @@ public class CardUI extends FrameLayout {
 	}
 
 	public void addCardToLastStack(Card card, boolean refresh) {
+		if(mStacks.isEmpty()){
+			addCard(card, refresh);
+			return;
+		}
 		int lastItemPos = mStacks.size() - 1;
 		CardStack cardStack = (CardStack) mStacks.get(lastItemPos);
 		cardStack.add(card);
@@ -287,6 +290,7 @@ public class CardUI extends FrameLayout {
 			mListView.setAdapter(mAdapter);
 
 		} else {
+			mAdapter.setSwipeable(mSwipeable); // in case swipeable changed;
 			mAdapter.setItems(mStacks);
 
 		}

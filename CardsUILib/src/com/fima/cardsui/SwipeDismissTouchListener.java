@@ -1,5 +1,7 @@
 package com.fima.cardsui;
 
+import static com.nineoldandroids.view.ViewHelper.setAlpha;
+import static com.nineoldandroids.view.ViewPropertyAnimator.animate;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
@@ -11,9 +13,6 @@ import com.nineoldandroids.animation.Animator.AnimatorListener;
 import com.nineoldandroids.animation.AnimatorListenerAdapter;
 import com.nineoldandroids.animation.ValueAnimator;
 import com.nineoldandroids.view.ViewHelper;
-
-import static com.nineoldandroids.view.ViewHelper.setAlpha;
-import static com.nineoldandroids.view.ViewPropertyAnimator.animate;
 
 /**
  * A {@link android.view.View.OnTouchListener} that makes any {@link View}
@@ -178,7 +177,8 @@ public class SwipeDismissTouchListener implements View.OnTouchListener {
 				});
 			} else {
 				// cancel
-				mView.animate().translationX(0).alpha(1).setDuration(mAnimationTime).setListener(null);
+				animate(mView).translationX(0).alpha(1).setDuration(mAnimationTime).setListener(null);
+				
 			}
 			mVelocityTracker = null;
 			mTranslationX = 0;

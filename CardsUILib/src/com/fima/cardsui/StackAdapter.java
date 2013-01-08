@@ -79,6 +79,10 @@ public class StackAdapter extends BaseAdapter {
 		notifyDataSetChanged();
 	}
 
+	public void setSwipeable(boolean b) {
+		mSwipeable = b;
+	}
+
 	public void setItems(CardStack cardStack, int position) {
 		mStacks.set(position, cardStack);
 	}
