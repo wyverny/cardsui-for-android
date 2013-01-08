@@ -3,32 +3,22 @@ package com.fima.cardsui;
 import java.util.ArrayList;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
-import android.widget.FrameLayout;
 
 import com.fima.cardsui.objects.AbstractCard;
-import com.fima.cardsui.objects.Card;
 import com.fima.cardsui.objects.CardStack;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.ObjectAnimator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
 
 public class StackAdapter extends BaseAdapter {
 
 	private Context mContext;
 	private ArrayList<AbstractCard> mStacks;
 	private boolean mSwipeable;
-	private Resources mResources;
 
 	public StackAdapter(Context context, ArrayList<AbstractCard> stacks,
 			boolean swipable) {
 		mContext = context;
-		mResources = mContext.getResources();
 		mStacks = stacks;
 		mSwipeable = swipable;
 
