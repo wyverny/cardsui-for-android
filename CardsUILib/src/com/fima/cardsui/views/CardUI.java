@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.Resources;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -43,8 +42,6 @@ public class CardUI extends FrameLayout {
 
 	private ArrayList<AbstractCard> mStacks;
 	private Context mContext;
-	private boolean mHeaderSet;
-	private View mHeaderView;
 	private ViewGroup mQuickReturnView;
 	private View mPlaceholderView;
 	private QuickReturnListView mListView;
@@ -196,7 +193,6 @@ public class CardUI extends FrameLayout {
 		});
 
 		if (header != null) {
-			mHeaderSet = true;
 			try {
 				mQuickReturnView.removeAllViews();
 			} catch (Exception e) {
