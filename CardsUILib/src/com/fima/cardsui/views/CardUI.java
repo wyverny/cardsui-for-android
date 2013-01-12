@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -254,7 +255,7 @@ public class CardUI extends FrameLayout {
 	}
 
 	public void addCardToLastStack(Card card, boolean refresh) {
-		if(mStacks.isEmpty()){
+		if (mStacks.isEmpty()) {
 			addCard(card, refresh);
 			return;
 		}
