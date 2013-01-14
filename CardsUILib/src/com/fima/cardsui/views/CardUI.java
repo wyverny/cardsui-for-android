@@ -216,6 +216,7 @@ public class CardUI extends FrameLayout {
 			try {
 				mQuickReturnView.removeAllViews();
 			} catch (Exception e) {
+				e.printStackTrace();
 			}
 			mQuickReturnView.addView(header);
 		}
