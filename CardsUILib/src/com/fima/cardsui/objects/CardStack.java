@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.fima.cardsui.R;
@@ -59,7 +59,7 @@ public class CardStack extends AbstractCard {
 		final View view = LayoutInflater.from(context).inflate(
 				R.layout.item_stack, null);
 
-		final FrameLayout container = (FrameLayout) view
+		final RelativeLayout container = (RelativeLayout) view
 				.findViewById(R.id.stackContainer);
 		final TextView title = (TextView) view.findViewById(R.id.stackTitle);
 
@@ -76,9 +76,9 @@ public class CardStack extends AbstractCard {
 		for (int i = 0; i < cardsArraySize; i++) {
 			card = cards.get(i);
 			cardView = null;
-			FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(
-					FrameLayout.LayoutParams.MATCH_PARENT,
-					FrameLayout.LayoutParams.WRAP_CONTENT);
+			RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
+					RelativeLayout.LayoutParams.MATCH_PARENT,
+					RelativeLayout.LayoutParams.WRAP_CONTENT);
 
 			int topPx = 0;
 
@@ -154,7 +154,7 @@ public class CardStack extends AbstractCard {
 	}
 
 	private OnClickListener getClickListener(final CardStack cardStack,
-			final FrameLayout container, final int index) {
+			final RelativeLayout container, final int index) {
 		return new OnClickListener() {
 
 			@Override
@@ -184,7 +184,7 @@ public class CardStack extends AbstractCard {
 			}
 
 			public void onClickFirstCard(final CardStack cardStack,
-					final FrameLayout frameLayout, final int index, View[] views) {
+					final RelativeLayout frameLayout, final int index, View[] views) {
 				// run through all the cards
 				for (int i = 0; i < views.length; i++) {
 					ObjectAnimator anim = null;
@@ -225,7 +225,7 @@ public class CardStack extends AbstractCard {
 			}
 
 			public void onClickOtherCard(final CardStack cardStack,
-					final FrameLayout frameLayout, final int index,
+					final RelativeLayout frameLayout, final int index,
 					View[] views, int last) {
 				// if clicked card is in middle
 				for (int i = index; i <= last; i++) {
@@ -261,7 +261,7 @@ public class CardStack extends AbstractCard {
 	}
 
 	private AnimatorListener getAnimationListener(final CardStack cardStack,
-			final FrameLayout frameLayout, final int index,
+			final RelativeLayout frameLayout, final int index,
 			final View clickedCard) {
 		return new AnimatorListener() {
 
@@ -309,9 +309,9 @@ public class CardStack extends AbstractCard {
 			private void handleFirstCard(View newFirstCard) {
 				newFirstCard
 						.setBackgroundResource(com.fima.cardsui.R.drawable.card_background);
-				FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(
-						FrameLayout.LayoutParams.MATCH_PARENT,
-						FrameLayout.LayoutParams.WRAP_CONTENT);
+				RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
+						RelativeLayout.LayoutParams.MATCH_PARENT,
+						RelativeLayout.LayoutParams.WRAP_CONTENT);
 
 				int top = 0;
 				int bottom = 0;
