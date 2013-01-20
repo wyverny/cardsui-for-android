@@ -7,6 +7,8 @@ public abstract class AbstractCard {
 
 	protected String title;
 	
+	protected int image;
+	
 	protected String desc;
 	
 	public abstract View getView(Context context);
@@ -20,6 +22,10 @@ public abstract class AbstractCard {
 	
 	public String getDesc() {
 		return desc;
+	}
+	
+	public int getImage() {
+		return image;
 	}
 	
 }

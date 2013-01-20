@@ -44,7 +44,10 @@ public class MainActivity extends Activity {
 		mCardView.addCardToLastStack(new MyCard("2 cards"));
 
 		// add one card
-		mCardView.addCard(new MyCard("1 card"));
+		mCardView.addCard(new MyImageCard("Nexus 4 Part 1",R.drawable.url1));
+		mCardView.addCardToLastStack(new MyImageCard("Nexus 4 Part 2",R.drawable.url2));
+		mCardView.addCardToLastStack(new MyImageCard("Nexus 4 Part 3", R.drawable.url3));
+
 
 		// create a stack
 		CardStack stack = new CardStack();
