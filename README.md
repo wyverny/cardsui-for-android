@@ -1,4 +1,4 @@
-cardsui-for-android
+CardsUI
 ===================
 
 **Added Google Play Cards.**
