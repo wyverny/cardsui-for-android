@@ -23,7 +23,7 @@ public abstract class Card extends AbstractCard {
 	public Card() {
 
 	}
-	
+
 	public Card(String title) {
 		this.title = title;
 	}
@@ -37,6 +37,17 @@ public abstract class Card extends AbstractCard {
 		this.title = title;
 		this.desc = desc;
 		this.image = image;
+	}
+
+	public Card(String titlePlay, String description, String color,
+			String titleColor, Boolean hasOverflow, Boolean isClickable) {
+
+		this.titlePlay = titlePlay;
+		this.description = description;
+		this.color = color;
+		this.titleColor = titleColor;
+		this.hasOverflow = hasOverflow;
+		this.isClickable = isClickable;
 	}
 
 	@Override
@@ -151,7 +162,7 @@ public abstract class Card extends AbstractCard {
 	}
 
 	protected int getCardLayout() {
-		return R.layout.item_card_empty;
+		return R.layout.item_card;
 	}
 
 	protected int getLastCardLayout() {
@@ -159,7 +170,7 @@ public abstract class Card extends AbstractCard {
 	}
 
 	protected int getFirstCardLayout() {
-		return R.layout.item_card_empty_first;
+		return R.layout.item_play_card_empty_first;
 	}
 
 }
