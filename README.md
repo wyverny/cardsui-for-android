@@ -48,5 +48,5 @@ I'm working on a supplementary example app for the CardsUI library. This app inc
 Ultimately, the aim of this app will be to generate a zip file containing the code & resources needed for the cards "activity" the user generated in the app.
 Considering that the cards layout needs to be on the app side, and not on the library side, this could be useful.
 
-![screenshot1](http://imageshack.us/a/img837/1365/cardsgen1.png)![screenshot2](http://imageshack.us/a/img708/8929/cardsgen2.png)![screenshot3](http://imageshack.us/a/img90/7456/cardsgen3.png)![screenshot4](http://imageshack.us/a/img109/9287/cardsgen4.png)![screenshot5](http://imageshack.us/a/img209/8982/cardsgen5.png)![screenshot6](http://imageshack.us/a/img515/4987/cardsgen6.png)
+![screenshot1](http://imageshack.us/a/img837/1365/cardsgen1.png) ![screenshot2](http://imageshack.us/a/img708/8929/cardsgen2.png) ![screenshot3](http://imageshack.us/a/img90/7456/cardsgen3.png) ![screenshot4](http://imageshack.us/a/img109/9287/cardsgen4.png) ![screenshot5](http://imageshack.us/a/img209/8982/cardsgen5.png) ![screenshot6](http://imageshack.us/a/img515/4987/cardsgen6.png)
 
