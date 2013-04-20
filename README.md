@@ -27,12 +27,14 @@ In addition to the Google Play cards, I made a few changes to the original libra
 
 Those changes include :
 
-*Ability to set regular cards's description text programmatically
+* Ability to set regular cards's description text programmatically
+
 Called like this :
 
     mCardView.addCard(new MyCard("title string", "description string");
     
-*Ability to set stack titles's color programmatically
+* Ability to set stack titles's color programmatically
+
 Called like this :
 
     CardStack stack = new CardStack();
