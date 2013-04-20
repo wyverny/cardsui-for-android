@@ -6,6 +6,7 @@ An open source library offering the popular Google Now & Google Play cards views
 This new type of card based on the new Google play design are highly customizable.
 
 The parameters include :
+
 * Title text (String)
 * Description text (String)
 * Title color (String)
@@ -25,6 +26,7 @@ Here is an example :
 In addition to the Google Play cards, I made a few changes to the original library by [Nadav Fima](https://github.com/nadavfima/cardsui-for-android).
 
 Those changes include :
+
 *Ability to set regular cards's description text programmatically
 Called like this :
 
