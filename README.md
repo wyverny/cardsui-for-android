@@ -14,6 +14,7 @@ The parameters include :
 * Touch feedback on click (Boolean)
 
 Here is an example : 
+
     mCardView.addCard(new MyPlayCard(
             "Different Colors for Title & Stripe", 
             "You can set any color for the title and any other color for the left stripe", 
@@ -26,10 +27,12 @@ In addition to the Google Play cards, I made a few changes to the original libra
 Those changes include :
 *Ability to set regular cards's description text programmatically
 Called like this :
+
     mCardView.addCard(new MyCard("title string", "description string");
     
 *Ability to set stack titles's color programmatically
 Called like this :
+
     CardStack stack = new CardStack();
     stack.setTitle("Card Title");
     stack.setColor("#33b5e5");
