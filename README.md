@@ -79,7 +79,7 @@ BasicCard card = (BasicCard) CardFactory.createCard(model); // This cast is safe
 mCardUI.addCard(card);
 ```
 
-Special thanks to [FLamparski](FLamparski) for the MVC implementation and data attachement/background modification commits.
+Special thanks to [https://github.com/FLamparski](FLamparski) for the MVC implementation and data attachement/background modification commits.
     
     
 ## CardsUI Generator
