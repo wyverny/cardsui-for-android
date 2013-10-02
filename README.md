@@ -1,6 +1,6 @@
 CardsUI
 ===================
-An open source library offering the popular Google Now & Google Play cards views, additionnal features and an optional Model-View-Controller structure.
+An open source library offering the popular Google Now & Google Play cards views, additionnal features, view recycling and an optional Model-View-Controller structure.
 
 ## Google Play Cards
 This new type of card based on the new Google play design are highly customizable.
