@@ -8,6 +8,9 @@ out
 lib
 local.properties
 
+*/.gradle
+CardsUILib/.gradle
+
 target
 pom.xml.*
 release.properties
