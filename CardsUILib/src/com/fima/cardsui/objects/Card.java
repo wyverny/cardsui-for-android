@@ -69,62 +69,19 @@ public abstract class Card extends AbstractCard {
 
     @Override
     public View getView(Context context) {
-
-        View view = LayoutInflater.from(context).inflate(getCardLayout(), null);
-
-        mCardLayout = view;
-
-        try {
-            ((FrameLayout) view.findViewById(R.id.cardContent))
-                    .addView(getCardContent(context));
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
-
-        // ((TextView) view.findViewById(R.id.title)).setText(this.title);
-
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        int bottom = Utils.convertDpToPixelInt(context, 12);
-        lp.setMargins(0, 0, 0, bottom);
-
-        view.setLayoutParams(lp);
-
-        return view;
+    	return getView(context, getCardLayout());
     }
 
     public View getViewLast(Context context) {
-
-        View view = LayoutInflater.from(context).inflate(getLastCardLayout(),
-                null);
-
-        mCardLayout = view;
-
-        try {
-            ((FrameLayout) view.findViewById(R.id.cardContent))
-                    .addView(getCardContent(context));
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
-
-        // ((TextView) view.findViewById(R.id.title)).setText(this.title);
-
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        int bottom = Utils.convertDpToPixelInt(context, 12);
-        lp.setMargins(0, 0, 0, bottom);
-
-        view.setLayoutParams(lp);
-
-        return view;
+    	return getView(context, getLastCardLayout());
     }
 
     public View getViewFirst(Context context) {
-
-        View view = LayoutInflater.from(context).inflate(getFirstCardLayout(),
-                null);
+    	return getView(context, getFirstCardLayout());
+    }
+    
+    private View getView(Context context, int layout) {
+    	View view = LayoutInflater.from(context).inflate(layout, null);
 
         mCardLayout = view;
 
